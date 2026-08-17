@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MPHATSO CLOSET</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a0d05, #2b1608);
+      color: white;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      margin: auto;
+      background: #1c130c;
+      border-radius: 25px;
+      padding: 30px 22px;
+      box-shadow: 0 0 35px rgba(255, 180, 60, 0.10);
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 45px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .tagline {
+      text-align: center;
+      color: #d8b48a;
+      margin-bottom: 6px;
+    }
+
+    .about {
+      text-align: center;
+      color: #999;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .prices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .price-card {
+      background: #2a1c11;
+      padding: 20px 10px;
+      border-radius: 18px;
+      text-align: center;
+      border: 1px solid #3d2a18;
+    }
+
+    .price-card h2 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .copy1 { color: #ffcf5c; }
+    .copy2 { color: #ff9d5c; }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .form-group { margin-bottom: 17px; }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+      color: #e2c9ad;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #3d2a18;
+      background: #2a1c11;
+      color: white;
+      font-size: 16px;
+      outline: none;
+    }
+
+    input:focus, select:focus { border-color: #ffb347; }
+    input::placeholder { color: #8a7360; }
+
+    .add-button {
+      width: 100%;
+      border: 2px solid #ffb347;
+      padding: 14px;
+      border-radius: 12px;
+      background: transparent;
+      color: #ffcf5c;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-bottom: 10px;
+    }
+
+    .add-button:hover { background: rgba(255, 179, 71, 0.12); }
+
+    .order-now-button {
+      width: 100%;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      background: #ffb347;
+      color: #1c130c;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-bottom: 20px;
+    }
+
+    .order-now-button:hover { background: #ffc46b; transform: scale(1.02); }
+
+    .cart-section { margin: 28px 0; }
+
+    .cart-title {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #ffcf5c;
+    }
+
+    .cart-empty {
+      color: #8a7360;
+      text-align: center;
+      padding: 18px;
+      background: #2a1c11;
+      border-radius: 12px;
+      font-size: 14px;
+    }
+
+    .cart-item {
+      background: #2a1c11;
+      border: 1px solid #3d2a18;
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-item-details { font-size: 14px; line-height: 1.5; }
+    .cart-item-details b { color: #ffcf5c; }
+    .cart-item-price { font-weight: bold; color: #ffcf5c; white-space: nowrap; }
+
+    .remove-btn {
+      background: #3b0a0a;
+      color: #ff6b6b;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: bold;
+      margin-left: 8px;
+    }
+
+    .remove-btn:hover { background: #521010; }
+
+    .total-box {
+      background: #3a2410;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      margin: 25px 0;
+    }
+
+    .total-label { color: #cbb08a; font-size: 14px; }
+    .total { font-size: 32px; font-weight: bold; color: #ffcf5c; margin-top: 5px; }
+
+    .order-button {
+      width: 100%;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      background: #25D366;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .order-button:hover { transform: scale(1.03); background: #20bd5a; }
+    .order-button:disabled { background: #444; cursor: not-allowed; transform: none; }
+
+    #message {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .success { background: #2f4520; color: #b6ffb0; }
+    .error { background: #3b0a0a; color: #ff6b6b; }
+
+    .delivery {
+      margin-top: 25px;
+      background: #2a1c11;
+      padding: 18px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .delivery h3 { margin-bottom: 8px; color: #ffcf5c; }
+    .delivery p { color: #b8a186; line-height: 1.5; }
+
+    .footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #7a6650;
+      font-size: 13px;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid #3d2a18;
+      margin: 28px 0;
+    }
+
+    @media (max-width: 400px) {
+      .prices { grid-template-columns: 1fr; }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="logo">🧥✨</div>
+    <h1>MPHATSO CLOSET</h1>
+    <p class="tagline">Quality Jerseys, Delivered To You 🔥</p>
+    <p class="about">Trusted jersey supplier — order in minutes.</p>
+
+    <div class="prices">
+      <div class="price-card">
+        <h2>🥇 ORIGINAL</h2>
+        <div class="price copy1">K55,000</div>
+        <p>Per Jersey</p>
+      </div>
+      <div class="price-card">
+        <h2>🥈 2nd Copy</h2>
+        <div class="price copy2">K25,000</div>
+        <p>Per Jersey</p>
+      </div>
+    </div>
+
+    <h2 class="section-title">🛒 Build Your Order</h2>
+
+    <div class="form-group">
+      <label for="copy">Jersey Quality</label>
+      <select id="copy" onchange="calculateTotal()">
+        <option value="55000">🥇 ORIGINAL - K55,000</option>
+        <option value="25000">🥈 2nd Copy - K25,000</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="team">Team / Jersey Name</label>
+      <input type="text" id="team" placeholder="e.g. Man United, Barcelona, Malawi Flames">
+    </div>
+
+    <div class="form-group">
+      <label for="colour">Colour</label>
+      <input type="text" id="colour" placeholder="e.g. Red, Home, Black/Gold">
+    </div>
+
+    <div class="form-group">
+      <label for="size">Jersey Size</label>
+      <select id="size">
+        <option value="">Select Size</option>
+        <option value="S">Small (S)</option>
+        <option value="M">Medium (M)</option>
+        <option value="L">Large (L)</option>
+        <option value="XL">Extra Large (XL)</option>
+        <option value="XXL">XXL</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity (Angati)</label>
+      <input type="number" id="quantity" min="1" value="1" onchange="calculateTotal()" oninput="calculateTotal()">
+    </div>
+
+    <button class="add-button" onclick="addToCart()">➕ Add to Cart (Kusankha Angapo!)</button>
+
+    <div class="cart-section">
+      <div class="cart-title">🧺 Your Cart</div>
+      <div id="cartList">
+        <div class="cart-empty" id="cartEmpty">Your cart is empty. Add jerseys above.</div>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="form-group">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" placeholder="Enter your name">
+    </div>
+
+    <div class="form-group">
+      <label for="location">Delivery Location</label>
+      <input type="text" id="location" placeholder="Titumize Kuti ?">
+    </div>
+
+    <div class="total-box">
+      <div class="total-label">TOTAL PRICE</div>
+      <div class="total" id="total">K0</div>
+    </div>
+
+    <button class="order-button" id="orderBtn" onclick="placeOrder()">
+      📱 ORDER ON WHATSAPP
+    </button>
+
+    <div id="message"></div>
+
+    <div class="delivery">
+      <h3>🚚 Delivery Available</h3>
+      <p>We deliver jerseys to customers.<br>Enter your location when placing your order.</p>
+    </div>
+
+    <div class="footer">MPHATSO CLOSET © 2026</div>
+
+  </div>
+
+  <script>
+
+    const WHATSAPP_NUMBER = "265885560602";
+
+    let cart = [];
+
+    calculateTotal();
+
+    function showMessage(text, type) {
+      const messageBox = document.getElementById("message");
+      messageBox.textContent = text;
+      messageBox.className = type;
+      messageBox.style.display = "block";
+    }
+
+    function addToCart() {
+
+      const copySelect = document.getElementById("copy");
+      const copyLabel = copySelect.options[copySelect.selectedIndex].text.trim();
+      const price = Number(copySelect.value);
+
+      const team = document.getElementById("team").value.trim();
+      const colour = document.getElementById("colour").value.trim();
+      const size = document.getElementById("size").value;
+      const quantity = Number(document.getElementById("quantity").value);
+
+      if (!team) { showMessage("⚠️ Please enter the team / jersey name.", "error"); return; }
+      if (!colour) { showMessage("⚠️ Please enter a colour.", "error"); return; }
+      if (!size) { showMessage("⚠️ Please select a jersey size.", "error"); return; }
+      if (!quantity || quantity < 1) { showMessage("⚠️ Please enter a valid quantity.", "error"); return; }
+
+      cart.push({ copyLabel, price, team, colour, size, quantity });
+
+      document.getElementById("team").value = "";
+      document.getElementById("colour").value = "";
+      document.getElementById("size").value = "";
+      document.getElementById("quantity").value = "1";
+      document.getElementById("message").style.display = "none";
+
+      renderCart();
+
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function calculateTotal() {
+
+      const price = Number(document.getElementById("copy").value) || 0;
+      const quantity = Number(document.getElementById("quantity").value) || 0;
+      const currentItemTotal = price * quantity;
+
+      const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+      const total = cartTotal + currentItemTotal;
+
+      document.getElementById("total").textContent = "K" + total.toLocaleString();
+
+    }
+
+    function renderCart() {
+
+      const cartList = document.getElementById("cartList");
+      const orderBtn = document.getElementById("orderBtn");
+
+      if (cart.length === 0) {
+        cartList.innerHTML = '<div class="cart-empty" id="cartEmpty">Your cart is empty. Add jerseys above.</div>';
+        calculateTotal();
+        orderBtn.disabled = true;
+        return;
+      }
+
+      let html = "";
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+
+        html += '<div class="cart-item">';
+        html += '<div class="cart-item-details">';
+        html += '<b>' + item.team + '</b> (' + item.colour + ', ' + item.size + ')<br>';
+        html += item.copyLabel.replace(/^[^\-]+-\s*/, '').trim() + ' — Qty: ' + item.quantity + '<br>';
+        html += '<span class="cart-item-price">K' + itemTotal.toLocaleString() + '</span>';
+        html += '</div>';
+        html += '<button class="remove-btn" onclick="removeFromCart(' + index + ')">Remove</button>';
+        html += '</div>';
+      });
+
+      cartList.innerHTML = html;
+      calculateTotal();
+      orderBtn.disabled = false;
+
+    }
+
+    function placeOrder() {
+
+      // If cart is empty, try to use whatever is currently filled in as a single item
+      if (cart.length === 0) {
+
+        const copySelect = document.getElementById("copy");
+        const copyLabel = copySelect.options[copySelect.selectedIndex].text.trim();
+        const price = Number(copySelect.value);
+
+        const team = document.getElementById("team").value.trim();
+        const colour = document.getElementById("colour").value.trim();
+        const size = document.getElementById("size").value;
+        const quantity = Number(document.getElementById("quantity").value);
+
+        if (!team || !colour || !size || !quantity || quantity < 1) {
+          showMessage("⚠️ Please fill in the jersey details above (team, colour, size, quantity) or add items to your cart.", "error");
+          return;
+        }
+
+        cart.push({ copyLabel, price, team, colour, size, quantity });
+
+      }
+
+      const name = document.getElementById("name").value.trim();
+      const location = document.getElementById("location").value.trim();
+
+      if (!name) { showMessage("⚠️ Please enter your name.", "error"); return; }
+      if (!location) { showMessage("⚠️ Please enter your delivery location.", "error"); return; }
+
+      let total = 0;
+      let itemsText = "";
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        itemsText += "\n" + (index + 1) + ". " + item.copyLabel + "\n\n";
+        itemsText += "*TEAM:* " + item.team + "\n\n";
+        itemsText += "*COLOUR:* " + item.colour + "\n\n";
+        itemsText += "*SIZE:* " + item.size + "\n\n";
+        itemsText += "*QUANTITY:* " + item.quantity + "\n\n";
+      });
+
+      const orderMessage =
+        "HEYY MPHATSO CLOSET!\n\n" +
+        "I wanna make an order for your damn jerseys! 🔥🔥\n\n" +
+        itemsText +
+        "*TOTAL:* K" + total.toLocaleString() + "\n\n" +
+        "*CUSTOMER NAME:* " + name + "\n\n" +
+        "📍 *DELIVERY LOCATION:* " + location + "\n\n" +
+        "Sup " + name + "? Your Order Will Be Confirmed Shortly, Thank You Million Times 🔥";
+
+      const encodedMessage = encodeURIComponent(orderMessage);
+      const whatsappURL = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodedMessage;
+
+      showMessage("🙏 Thank you! Your order has been sent. We'll contact you shortly to confirm delivery.", "success");
+      window.open(whatsappURL, "_blank");
+
+    }
+
+  </script>
+
+</body>
+</html>
